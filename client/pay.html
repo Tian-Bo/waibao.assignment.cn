@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <title>register</title>
 
     <style>
-        .content{
+        #app {
             padding: 30px;
             width: 300px;
             border: 1px solid #ccc;
             margin: 100px auto;
         }
-        header{
+
+        header {
             font-size: 16px;
             text-align: center;
             margin: 15px;
@@ -22,20 +24,24 @@
             line-height: 30px;
             font-weight: bold;
         }
-        .body-item{
+
+        .body-item {
             margin: 30px 0;
             height: 25px;
         }
-        .body-item label{
+
+        .body-item label {
             display: inline-block;
             width: 80px;
             height: 100%;
         }
-        .body-item input{
+
+        .body-item input {
             width: 180px;
             height: 100%;
         }
-        .btn{
+
+        .btn {
             width: 100px;
             display: block;
             height: 30px;
@@ -52,24 +58,53 @@
     </style>
 
 </head>
+
 <body>
-    <div class="content">
+    <div id="app">
         <header>支付</header>
         <main class="body">
             <div class="body-item">
                 <label for="">姓名</label>
-                <input type="text" placeholder="请输入姓名">
-            </div>
-            <div class="body-item">
-                <label for="">手机号</label>
-                <input type="text" placeholder="请输入手机号">
+                <input type="text" placeholder="请输入姓名" v-model="name">
             </div>
             <div class="body-item">
                 <label for="">卡号</label>
-                <input type="text" placeholder="请输入卡号">
+                <input type="text" placeholder="请输入卡号" v-model="card">
             </div>
-            <div class="btn">确认支付</div>
+            <div class="btn" @click="submit">确认支付</div>
         </main>
     </div>
+
+    <script src="./js/vue.min.js"></script>
+    <script src="../server/users.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '', //账号
+                card: '', //密码
+            },
+            created() {
+
+            },
+            methods: {
+                // submit
+                submit() {
+                    if (this.name == '') {
+                        return alert('姓名不能为空')
+                    }
+                    if (this.card == '') {
+                        return alert('卡号不能为空')
+                    }
+                    alert('提交成功')
+                }
+            },
+            beforeDestroy() {
+
+            }
+        })
+    </script>
+
 </body>
+
 </html>
