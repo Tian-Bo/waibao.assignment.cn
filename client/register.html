@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>register</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #app {
+            padding: 30px;
+            width: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        header {
+            font-size: 16px;
+            text-align: center;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        .body-item {
+            margin: 30px 0;
+            height: 25px;
+        }
+
+        .body-item label {
+            display: inline-block;
+            width: 80px;
+            height: 100%;
+        }
+
+        .body-item input {
+            width: 180px;
+            height: 100%;
+        }
+
+        button {
+            margin-left: 85px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">register</header>
+        <main class="body">
+            <div class="body-item">
+                <label for="">username</label>
+                <input type="text" placeholder="username" v-model="username">
+            </div>
+            <div class="body-item">
+                <label for="">password</label>
+                <input type="text" placeholder="password" v-model="password">
+            </div>
+            <div class="body-item">
+                <label for="">password</label>
+                <input type="text" placeholder="password" v-model="verPassword">
+            </div>
+            <button><a href="./login.html">login</a></button>
+            <button @click="submit">submit</button>
+        </main>
+    </div>
+
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/FileSaver.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                username: '', //账号
+                password: '', //密码
+                verPassword: '' //确认密码
+            },
+            created() {
+
+            },
+            methods: {
+                // register
+                submit() {
+                    // if (this.username == '') {
+                    //     return alert('账号不能为空')
+                    // }
+                    // if (this.password.length < 6) {
+                    //     return alert('请输入长度不低于6位数的密码')
+                    // }
+                    // if (this.password !== this.verPassword) {
+                    //     return alert('两次输入密码不一致')
+                    // }
+                    let data = {
+                        name: "hanmeimei",
+                        age: 88
+                    }
+                    let content = JSON.stringify(data)
+                    let blob = new Blob([content], { type: "text/plain;charset=utf-8" })
+                    saveAs(blob, "abb.json")
+                }
+            },
+            beforeDestroy() {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
