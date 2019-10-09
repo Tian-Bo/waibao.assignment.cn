@@ -85,7 +85,7 @@
                 </div>
                 <div class="btn btn1">普通不加密提交</div>
                 <div class="btn btn2">RSA加密提交</div>
-                <input type="submit" class="sumbit">
+                <!-- <input type="submit" class="sumbit"> -->
             </form>
             <footer>
                 <div>显示提交信息</div>
@@ -104,7 +104,7 @@
                 // 加密的数据
                 let data = $('.card').val()
                 $('.show-msg').val(data)
-                $('.sumbit').click()
+                // $('.sumbit').click()
 
             })
             $('.btn2').on('click', function () {
@@ -120,7 +120,7 @@
                 let data = $('.card').val()
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
-                $('.sumbit').click()
+                // $('.sumbit').click()
 
                 //使用私钥解密
                 // var decrypt = new JSEncrypt();
