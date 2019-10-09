@@ -58,57 +58,27 @@
     <div id="app">
         <header class="header">register</header>
         <main class="body">
-            <div class="body-item">
-                <label for="">username</label>
-                <input type="text" placeholder="username" v-model="username">
-            </div>
-            <div class="body-item">
-                <label for="">password</label>
-                <input type="text" placeholder="password" v-model="password">
-            </div>
-            <div class="body-item">
-                <label for="">password</label>
-                <input type="text" placeholder="password" v-model="verPassword">
-            </div>
-            <button><a href="./login.html">login</a></button>
-            <button @click="submit">submit</button>
+            <form action="../server/register.php" method="get">
+                <div class="body-item">
+                    <label for="">username</label>
+                    <input type="text" placeholder="username" name="username">
+                </div>
+                <div class="body-item">
+                    <label for="">password</label>
+                    <input type="text" placeholder="password" name="password">
+                </div>
+                <div class="body-item">
+                    <label for="">password</label>
+                    <input type="text" placeholder="password" name="verPassword">
+                </div>
+                <button><a href="./login.html">login</a></button>
+                <button>submit</button>
+            </form>
+
         </main>
     </div>
 
-    <script src="./js/vue.min.js"></script>
-    <script src="./js/FileSaver.min.js"></script>
-    <script src="../server/users.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                username: '', //账号
-                password: '', //密码
-                verPassword: '' //确认密码
-            },
-            created() {
-
-            },
-            methods: {
-                // register
-                submit() {
-                    if (this.username == '') {
-                        return alert('账号不能为空')
-                    }
-                    if (this.password.length < 6) {
-                        return alert('请输入长度不低于6位数的密码')
-                    }
-                    if (this.password !== this.verPassword) {
-                        return alert('两次输入密码不一致')
-                    }
-                    register();
-                }
-            },
-            beforeDestroy() {
-
-            }
-        })
-    </script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
 </body>
 
 </html>
