@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>login</title>
 
-    <style>
+    <style>   
         * {
             margin: 0;
             padding: 0;
@@ -59,51 +59,22 @@
     <div id="app">
         <header class="header">login</header>
         <main class="body">
-            <div class="body-item">
-                <label for="">username</label>
-                <input type="text" placeholder="username" v-model="username">
-            </div>
-            <div class="body-item">
-                <label for="">password</label>
-                <input type="text" placeholder="password" v-model="password">
-            </div>
-            <button><a href="./register.html">register</a></button>
-            <button @click="submit">submit</button>
+            <form action="../server/login.php" method="get">
+                <div class="body-item">
+                    <label for="">username</label>
+                    <input type="text" placeholder="username" name="username">
+                </div>
+                <div class="body-item">
+                    <label for="">password</label>
+                    <input type="text" placeholder="password" name="password">
+                </div>
+                <button><a href="./register.html">register</a></button>
+                <button @click="submit">submit</button>
+            </form>
         </main>
     </div>
 
-    <script src="./js/vue.min.js"></script>
-    <script src="../server/users.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                username: '', //账号
-                password: '', //密码
-            },
-            created() {
-
-            },
-            methods: {
-                // login
-                submit() {
-                    if (this.username == '') {
-                        return alert('账号不能为空')
-                    }
-                    if (this.password.length < 6) {
-                        return alert('请输入正确的密码')
-                    }
-                    login();
-                    let token = '123456789'
-                    localStorage.setItem('token', token)
-                    window.location.href = './shop_list.html'
-                }
-            },
-            beforeDestroy() {
-
-            }
-        })
-    </script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
 </body>
 
 </html>
