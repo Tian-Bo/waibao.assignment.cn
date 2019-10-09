@@ -65,45 +65,17 @@
         <main class="body">
             <div class="body-item">
                 <label for="">姓名</label>
-                <input type="text" placeholder="请输入姓名" v-model="name">
+                <input type="text" placeholder="请输入姓名" name="name">
             </div>
             <div class="body-item">
                 <label for="">卡号</label>
-                <input type="text" placeholder="请输入卡号" v-model="card">
+                <input type="text" placeholder="请输入卡号" name="card">
             </div>
-            <div class="btn" @click="submit">确认支付</div>
+            <div class="btn">确认支付</div>
         </main>
     </div>
 
-    <script src="./js/vue.min.js"></script>
-    <script src="../server/users.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                name: '', //账号
-                card: '', //密码
-            },
-            created() {
-
-            },
-            methods: {
-                // submit
-                submit() {
-                    if (this.name == '') {
-                        return alert('姓名不能为空')
-                    }
-                    if (this.card == '') {
-                        return alert('卡号不能为空')
-                    }
-                    alert('提交成功')
-                }
-            },
-            beforeDestroy() {
-
-            }
-        })
-    </script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
 
 </body>
 
