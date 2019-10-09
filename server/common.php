@@ -23,7 +23,7 @@ class common
      */
     public function addCart($user_id, $goods_id)
     {
-        $file = '../database/shop_list.json';
+        $file = '../database/shop_cart.json';
         if (file_exists($file)) {
             $goods_json = file_get_contents($file);
             if (empty($goods_json)) {
@@ -31,10 +31,10 @@ class common
                 $goods_json = [];
                 $user_goods_json = [
                     'id' => $user_id,
-                    'goods_list' => [
+                    'goods_list' => [[
                         'goods_id' => $goods_id,
                         'number' => 1,
-                    ],
+                    ]],
                 ];
                 array_push($goods_json, $user_goods_json);
                 $cart_file = '../database/shop_cart.json';
@@ -49,22 +49,38 @@ class common
                 foreach ($goods_json as $index => $item) {
                     // 找到用户购物车的数据
                     if ($item['id'] == $user_id) {
-                        $user_goods_json = json_decode($item,true);
-                        $user_goods_list = $user_goods_json['goods_list'];
+                        $user_goods_list = $item['goods_list'];
                         // 根据goods_id 判断当前商品是否存在 存在数量加一
-                        foreach ($user_goods_list as $key=>$value) {
-                            if($value['goods_id'] ==  $goods_id){
+                        foreach ($user_goods_list as $key => $value) {
+                            if ($value['goods_id'] == $goods_id) {
                                 // 数量加一
-                                $value['number'] = $value['number'] + 1;
+                                $user_goods_list[$key]['number'] = $value['number'] + 1;
+                                $goods_json[$key]['goods_list'] = $user_goods_list;
+                                // 修改后将数据写入文件
+                                $result = file_put_contents($file, json_encode($goods_json));
+                                if ($result) {
+                                    return true;
+                                }
+                                return false;
                             }
-                        }
-                        $goods_json = [
-                            'id' => $user_id,
-                            'goods_list' => [
+                            // 如果当前商品不存在 创建商品信息
+                            $goods_json = [
                                 'goods_id' => $goods_id,
                                 'number' => 1,
-                            ],
-                        ];
+                            ];
+                            // 将商品写入用户商品列表
+                            var_dump($goods_json[$key]);die;
+                            array_push(json_decode($goods_json[$key]['goods_list'],true), $goods_json);
+                            var_dump($goods_json);die;
+                            // 修改后将数据写入文件
+                            $result = file_put_contents($file, json_encode($goods_json));
+                            if ($result) {
+                                return true;
+                            }
+                            return false;
+                        }
+                    } else {
+                        echo "用户不存在";die;
                     }
                 }
             }

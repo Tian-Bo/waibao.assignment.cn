@@ -4,6 +4,8 @@
  */
 include 'common.php';
 header("content-Type: text/html; charset=utf-8");
+// 开启session
+session_start();
 // 获取用户名密码
 $username = isset($_GET['username']) ? $_GET['username'] : '';
 $password = isset($_GET['password']) ? $_GET['password'] : '';
@@ -27,10 +29,13 @@ if (file_exists($file)) {
     foreach ($user_json as $index => $item) {
         if ($username == $item['username'] && $password == $item['password']) {
             // 登录成功将用户信息存入session
+            $_SESSION['user_info'] = $item;
             echo "<script>alert('登录成功');</script>";
-            header('location:../client/shop_list.html');die;
+            $url = 'goods_list.php';
+            echo "<script>window.location.href='$url';</script>";die;
         }
     }
     echo "<script>alert('登录失败');</script>";
-    header('location:../server/login.php');die;
+    $url = '../client/login.html';
+    echo "<script>window.location.href='$url';</script>";die;
 }
