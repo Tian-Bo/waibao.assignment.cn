@@ -10,7 +10,7 @@
     <style>
         #app {
             padding: 30px;
-            width: 300px;
+            /* width: 600px; */
             border: 1px solid #ccc;
             margin: 100px auto;
         }
@@ -23,6 +23,11 @@
             height: 30px;
             line-height: 30px;
             font-weight: bold;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
         }
 
         .body-item {
@@ -42,7 +47,7 @@
         }
 
         .btn {
-            width: 100px;
+            width: 120px;
             display: block;
             height: 30px;
             font-size: 13px;
@@ -50,10 +55,16 @@
             margin: auto;
             background-color: #ff4400;
             border-radius: 3px;
+            margin-left: 85px;
             text-align: center;
             line-height: 30px;
             margin-top: 10px;
             cursor: pointer;
+        }
+        .btn button{
+            background-color: #ff4400;
+            border: none;
+            color: #fff;
         }
     </style>
 
@@ -64,18 +75,25 @@
         <header>支付</header>
         <main class="body">
             <form action="" method="get">
-                <div class="body-item">
+                <!-- <div class="body-item">
                     <label for="">姓名</label>
                     <input type="text" placeholder="请输入姓名" name="name">
-                </div>
+                </div> -->
                 <div class="body-item">
                     <label for="">卡号</label>
                     <input type="text" placeholder="请输入卡号" name="card">
                 </div>
-                <div class="btn">确认支付</div>
+                <div class="btn"><button>普通不加密提交</button></div>
+                <div class="btn"><button>RSA加密提交</button></div>
             </form>
+            <footer>
+                <div>显示提交信息</div>
+                <textarea name="" id="" cols="100" rows="30">
+                </textarea>
+            </footer>
         </main>
     </div>
+
 
     <script src="./js/jquery-1.12.4.min.js"></script>
 
