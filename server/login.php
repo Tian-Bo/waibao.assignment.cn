@@ -26,8 +26,9 @@ if (file_exists($file)) {
     // 循环判断登录
     foreach ($user_json as $index => $item) {
         if ($username == $item['username'] && $password == $item['password']) {
+            // 登录成功将用户信息存入session
             echo "<script>alert('登录成功');</script>";
-            header('location:../client/my_mall.html');die;
+            header('location:../client/shop_list.html');die;
         }
     }
     echo "<script>alert('登录失败');</script>";

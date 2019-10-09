@@ -14,6 +14,5 @@ if (!file_exists($file)) {
 $goods_json = file_get_contents($file);
 if (!empty($goods_json)) {
     $goods_json = json_decode($goods_json, true);
-    $commonObj->response(0, $goods_json, '商品信息获取成功！');
 }
-$commonObj->response(1, [], '暂无商品信息！');
+include '../client/shop_list.html';
