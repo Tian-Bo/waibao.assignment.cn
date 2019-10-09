@@ -48,6 +48,11 @@ if(!$user_json){
 // 写入文件
 $result = file_put_contents('../database/users.json',json_encode($user_json));
 if ($result) {
-    $commonObj->response(0,'','用户注册成功！');
+    echo "<script>alert('注册成功');</script>";
+    // 两秒后跳转页面
+    sleep(2);
+    header('location:../client/login.html');die;
 }
-$commonObj->response(1,'','用户注册失败！');
+echo "<script>alert('注册失败');</script>";
+sleep(2);
+header('location:../client/register.html');die;
