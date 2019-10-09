@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>login</title>
 
-    <style>   
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -69,12 +69,32 @@
                     <input type="text" placeholder="password" name="password">
                 </div>
                 <button><a href="./register.html">register</a></button>
-                <button @click="submit">submit</button>
+                <!-- <button @click="submit">submit</button> -->
+                <div class="submit">submit</div>
             </form>
         </main>
     </div>
 
     <script src="./js/jquery-1.12.4.min.js"></script>
+    <script>
+        $('.submit').on('click', function () {
+            let search_url = '../database/login.php'
+            let dataParam = {
+                username: '123',
+                password: 'q23123'
+            }
+            $.ajax({
+                type: "get",
+                url: search_url,
+                data: dataParam,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('123213')
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>
