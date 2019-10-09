@@ -37,7 +37,7 @@
 
         .body-item label {
             display: inline-block;
-            width: 80px;
+            width: 120px;
             height: 100%;
         }
 
@@ -55,7 +55,7 @@
             margin: auto;
             background-color: #ff4400;
             border-radius: 3px;
-            margin-left: 85px;
+            margin-left: 125px;
             text-align: center;
             line-height: 30px;
             margin-top: 10px;
@@ -76,19 +76,19 @@
 
 <body>
     <div id="app">
-        <header>支付</header>
+        <header>payment</header>
         <main class="body">
             <form action="" method="get">
                 <div class="body-item">
-                    <label for="">卡号</label>
-                    <input class="card" type="text" placeholder="请输入卡号" name="card">
+                    <label for="">Card number</label>
+                    <input class="card" type="text" placeholder="Please enter the card number" name="card">
                 </div>
-                <div class="btn btn1">普通不加密提交</div>
-                <div class="btn btn2">RSA加密提交</div>
+                <div class="btn btn1">submit</div>
+                <div class="btn btn2">Encrypted submit</div>
                 <!-- <input type="submit" class="sumbit"> -->
             </form>
             <footer>
-                <div>显示提交信息</div>
+                <div>Display submission information</div>
                 <textarea class="show-msg" name="" id="" cols="100" rows="30">
                 </textarea>
             </footer>
@@ -101,13 +101,18 @@
     <script>
         $(function () {
             $('.btn1').on('click', function () {
-                // 加密的数据
+                if ($('.card').val() == '') {
+                    alert('Card number cannot be empty')
+                }
                 let data = $('.card').val()
                 $('.show-msg').val(data)
                 // $('.sumbit').click()
 
             })
             $('.btn2').on('click', function () {
+                if ($('.card').val() == '') {
+                    alert('Card number cannot be empty')
+                }
                 //公钥
                 var PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8HMr2CBpoZPm3t9tCVlrKtTmI4jNJc7/HhxjIEiDjC8czP4PV+44LjXvLYcSV0fwi6nE4LH2c5PBPEnPfqp0g8TZeX+bYGvd70cXee9d8wHgBqi4k0J0X33c0ZnW7JruftPyvJo9OelYSofBXQTcwI+3uIl/YvrgQRv6A5mW01QIDAQAB';
                 //私钥
