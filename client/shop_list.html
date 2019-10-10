@@ -136,7 +136,7 @@
     $(document).on('click','.btn',function () {
         // 获取a标签的属性值
         var a= $(this).attr('value');
-        alert(a);
+        window.location.href = '../server/shop_cart.php?id=' + a
     });
 </script>
 </html>
