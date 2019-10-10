@@ -41,12 +41,12 @@ $shop_cart_json = file_get_contents($file);
 // 如果购物车数据不为空
 $shop_cart_json = json_decode($shop_cart_json, true);
 // 获取当前用户的购物车
+$shop_mall_json = [];
 foreach ($shop_cart_json as $index => $item) {
     // 如果用户购物车数据存在
     if ($item['id'] == $user_id) {
         // $commonObj->response(1, $item, '购物车信息获取成功！');
-        $shop_cart_json = [];
-        array_push($shop_cart_json, $item);
+        array_push($shop_mall_json, $item);
     }
 }
 
