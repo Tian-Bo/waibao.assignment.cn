@@ -57,7 +57,6 @@ class common
                                 $user_goods_list[$key]['number'] = $value['number'] + 1;
                                 $goods_json[$key]['goods_list'] = $user_goods_list;
                                 // 修改后将数据写入文件
-                                echo $goods_json;die;
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
                                     echo '添加成功';die;
