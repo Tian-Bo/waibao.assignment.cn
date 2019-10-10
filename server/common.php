@@ -78,7 +78,7 @@ class common
                         'number' => 1,
                     ]],
                 ];
-                array_push($goods_json, $user_info);
+                array_push($goods_json, $user_goods_json);
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
                     // $this->response(0, '', '成功添加到购物车！');
