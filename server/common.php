@@ -79,10 +79,12 @@ class common
                             }
                             return false;
                         }
-                    } else {
-                        echo "用户不存在";die;
                     }
+                    // else {
+                    //     echo "用户不存在";die;
+                    // }
                 }
+                echo "用户不存在";die;
             }
         }
     }
