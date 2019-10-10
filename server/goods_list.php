@@ -15,7 +15,4 @@ $goods_json = file_get_contents($file);
 if (!empty($goods_json)) {
     $goods_json = json_decode($goods_json, true);
 }
-$user_info = $_SESSION['user_info'];
-$user_id = $user_info['id'];
-echo 'user_id';die;
 include '../client/shop_list.html';
