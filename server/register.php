@@ -46,7 +46,7 @@ if(!$user_json){
     array_push($user_json, $user_info);
 }
 // 写入文件
-$result = file_put_contents('../database/users.json',json_encode($user_json));
+$result = file_put_contents('../database/users.json',$user_json);
 if ($result) {
     echo "<script>alert('注册成功');</script>";
     // 两秒后跳转页面
