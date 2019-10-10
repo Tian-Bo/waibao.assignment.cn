@@ -165,139 +165,28 @@
             <a href="shop_list.php">商城列表</a>
         </header>
         <ul>
+
+            <?php foreach($goods_json as $index=>$item){ ?>
             <li>
-                <div class="image"><img src="./img/5bb352eacbff7.jpg" alt=""></div>
+                <div class="image"><img src="<?php echo $item['img']?>" alt=""></div>
                 <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
+                    <h4><?php echo $item['title'];?></h4>
+                    <div><span>轮胎规格:</span><?php echo $item['speci'];?></div>
+                    <div><span>轮胎花纹:</span><?php echo $item['decor'];?></div>
+                    <div><span>商品品牌:</span><?php echo $item['brand'];?></div>
                 </div>
                 <div class="power">
                     <div class="number">
                         <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
+                        <!-- <div class="shop_number"><?php echo $item['number'];?></div> -->
                         <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
                         <span class="add-number">+</span>
                     </div>
-                    <div class="price">¥459.00元</div>
+                    <div class="price">¥<?php echo $item['price'];?></div>
                     <span class="btn">移除购物车</span>
                 </div>
             </li>
-            <li>
-                <div class="image"><img src="./img/58e73702dcf84.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <li>
-                <div class="image"><img src="./img/5bb352eacbff7.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <li>
-                <div class="image"><img src="./img/58e73702dcf84.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <li>
-                <div class="image"><img src="./img/5bb352eacbff7.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <li>
-                <div class="image"><img src="./img/58e73702dcf84.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <li>
-                <div class="image"><img src="./img/5bb352eacbff7.jpg" alt=""></div>
-                <div class="msg">
-                    <h4>马牌轮胎 ComfortContact CC6 195/65R15 91V 专为亚太地区量身打造 100110581</h4>
-                    <div><span>轮胎规格:</span>195/65R15</div>
-                    <div><span>轮胎花纹:</span>CC6</div>
-                    <div><span>商品品牌:</span>马牌/Continental</div>
-                </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number">99</div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥459.00元</div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
+            <?php };?>
         </ul>
         <footer>
             <span class="footer-item">共: <span>¥1000元</span></span>
