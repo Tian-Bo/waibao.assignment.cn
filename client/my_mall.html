@@ -168,7 +168,8 @@
 
             <?php foreach($shop_cart_json as $index=>$item){ ?>
             <li>
-                <div class="image"><img src="<?php echo $goods_json[$item['goods_list']['goods_id']]['img']?>" alt=""></div>
+                <div><?php echo $item;?></div>
+                <!-- <div class="image"><img src="<?php echo $goods_json[$item['goods_list']['goods_id']]['img']?>" alt=""></div>
                 <div class="msg">
                     <h4><?php echo $goods_json[$item['goods_list']['goods_id']]['title'];?></h4>
                     <div><span>轮胎规格:</span><?php echo $goods_json[$item['goods_list']['goods_id']]['speci'];?></div>
@@ -184,7 +185,7 @@
                     </div>
                     <div class="price">¥<?php echo $goods_json[$item['goods_list']['goods_id']]['price'];?></div>
                     <span class="btn">移除购物车</span>
-                </div>
+                </div> -->
             </li>
             <?php };?>
         </ul>
