@@ -166,23 +166,23 @@
         </header>
         <ul>
 
-            <?php foreach($goods_json as $index=>$item){ ?>
+            <?php foreach($shop_cart_json as $index=>$item){ ?>
             <li>
-                <div class="image"><img src="<?php echo $item['img']?>" alt=""></div>
+                <div class="image"><img src="<?php echo $goods_json[$item['goods_list']['goods_id']]['img']?>" alt=""></div>
                 <div class="msg">
-                    <h4><?php echo $item['title'];?></h4>
-                    <div><span>轮胎规格:</span><?php echo $item['speci'];?></div>
-                    <div><span>轮胎花纹:</span><?php echo $item['decor'];?></div>
-                    <div><span>商品品牌:</span><?php echo $item['brand'];?></div>
+                    <h4><?php echo $goods_json[$item['goods_list']['goods_id']]['title'];?></h4>
+                    <div><span>轮胎规格:</span><?php echo $goods_json[$item['goods_list']['goods_id']]['speci'];?></div>
+                    <div><span>轮胎花纹:</span><?php echo $goods_json[$item['goods_list']['goods_id']]['decor'];?></div>
+                    <div><span>商品品牌:</span><?php echo $goods_json[$item['goods_list']['goods_id']]['brand'];?></div>
                 </div>
                 <div class="power">
                     <div class="number">
                         <span class="remote-number">-</span>
-                        <!-- <div class="shop_number"><?php echo $item['number'];?></div> -->
+                        <div class="shop_number"><?php echo $item['number'];?></div>
                         <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
                         <span class="add-number">+</span>
                     </div>
-                    <div class="price">¥<?php echo $item['price'];?></div>
+                    <div class="price">¥<?php echo $goods_json[$item['goods_list']['goods_id']]['price'];?></div>
                     <span class="btn">移除购物车</span>
                 </div>
             </li>
