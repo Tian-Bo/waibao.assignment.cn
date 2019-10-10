@@ -30,8 +30,9 @@ if (file_exists($file)) {
         if ($username == $item['username'] && $password == $item['password']) {
             // 登录成功将用户信息存入session
 
-            echo $item['id'];die;
-            // $_SESSION['user_info'] = $item;
+            $_SESSION['user_info'] = $item;
+            $user_info = $_SESSION['user_info'];
+            echo $user_info['id'];die;
             // echo "<script>alert('登录成功');</script>";
             // $url = 'goods_list.php';
             // echo "<script>window.location.href='$url';</script>";die;
