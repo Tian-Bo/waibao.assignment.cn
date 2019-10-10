@@ -17,5 +17,5 @@ if (!empty($goods_json)) {
 }
 $user_info = $_SESSION['user_info'];
 $user_id = $user_info['id'];
-echo $user_id;die;
+echo 'user_id';die;
 include '../client/shop_list.html';
