@@ -84,7 +84,7 @@ class common
                     //     echo "用户不存在";die;
                     // }
                 }
-                echo "用户不存在...";die;
+                echo $user_id;die;
             }
         }
     }
