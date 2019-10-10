@@ -168,7 +168,7 @@
 
             <?php foreach($shop_cart_json as $index=>$item){ ?>
             <li>
-                <div><?php echo $item['goods_list']['goods_id'];?></div>
+                <div><?php echo $item['goods_list'][0]['goods_id'];?></div>
                 <!-- <div class="image"><img src="<?php echo $goods_json[$item['goods_list']['goods_id']]['img']?>" alt=""></div>
                 <div class="msg">
                     <h4><?php echo $goods_json[$item['goods_list']['goods_id']]['title'];?></h4>
