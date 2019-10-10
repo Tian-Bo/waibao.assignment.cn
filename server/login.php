@@ -30,14 +30,14 @@ if (file_exists($file)) {
         if ($username == $item['username'] && $password == $item['password']) {
             // 登录成功将用户信息存入session
 
-            echo $item;
+            echo $item;die;
             // $_SESSION['user_info'] = $item;
             // echo "<script>alert('登录成功');</script>";
             // $url = 'goods_list.php';
             // echo "<script>window.location.href='$url';</script>";die;
         }
     }
-    echo "<script>alert('登录失败');</script>";
-    $url = '../client/login.html';
-    echo "<script>window.location.href='$url';</script>";die;
+    // echo "<script>alert('登录失败');</script>";
+    // $url = '../client/login.html';
+    // echo "<script>window.location.href='$url';</script>";die;
 }
