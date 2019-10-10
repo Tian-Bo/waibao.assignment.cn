@@ -55,16 +55,13 @@ class common
                             if ($value['goods_id'] == $goods_id) {
                                 // 数量加一
                                 $user_goods_list[$key]['number'] = $value['number'] + 1;
-                                // $goods_json[$key]['goods_list'] = $user_goods_list;
+                                $goods_json[$key]['goods_list'] = $user_goods_list;
                                 // 修改后将数据写入文件
-                                $result = file_put_contents($file, json_encode($goods_json));
-                                echo '111';die;
+                                $result = file_put_contents($file, json_encode($goods_json, JSON_UNESCAPED_UNICODE));
                                 if ($result) {
-                                    return true;
-                                    echo '222';die;
+                                    echo '添加成功';die;
                                 }
-                                echo '333';die;
-                                return false;
+                                echo '添加失败';die;
                             }
                             // 如果当前商品不存在 创建商品信息
                             $goods_json = [
