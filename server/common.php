@@ -259,6 +259,7 @@ class common
                         // 成功之后 移除用户购物车信息
                         unset($cart_json[$index]['goods_list']);
                         $cart_json[$index]['goods_list'] = [];
+                        $cart_json[$index]['card'] = [];
                         $cart_json = array_values($cart_json);
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
@@ -277,6 +278,7 @@ class common
                         // 成功之后 移除用户购物车信息
                         unset($cart_json[$index]['goods_list']);
                         $cart_json[$index]['goods_list'] = [];
+                        $cart_json[$index]['card'] = [];
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
                         echo "<script>window.location.href='$url';</script>";
