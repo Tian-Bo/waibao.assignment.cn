@@ -71,7 +71,6 @@ class common
                             'number' => 1,
                         ];
                         // 将商品写入用户商品列表
-                        $user_goods_list = $goods_json[$index]['goods_list'];
                         array_push($user_goods_list, $user_goods_json);
                         // 修改后将数据写入文件
                         $result = file_put_contents($file, json_encode($goods_json));
