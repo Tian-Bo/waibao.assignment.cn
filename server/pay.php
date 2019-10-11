@@ -21,7 +21,7 @@ if (!empty($goods_json)) {
 $cart_json = [];
 foreach ($goods_json as $index => $item) {
     // 找到当前用户所有订单
-    echo $item;die;
+    echo $item['id'];die;
     if ($item['id'] == $user_id) {
         $cart_json = $item;
     }
