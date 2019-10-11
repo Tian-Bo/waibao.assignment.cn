@@ -26,4 +26,6 @@ foreach ($goods_json as $index => $item) {
     }
 }
 
+$cart_text = isset($_GET['cart_text']) ? $_GET['cart_text'] : '';
+
 include '../client/pay.html';
