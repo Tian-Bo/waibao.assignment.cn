@@ -122,6 +122,7 @@
                     id: cardJson,
                     card: data
                 }
+                data = JSON.stringify(data)
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
                 // $('.sumbit').click()
