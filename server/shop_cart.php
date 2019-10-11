@@ -2,17 +2,11 @@
 /*
  * 商品购物车
  */
+session_start();
 include 'common.php';
 header('Content-type:text/html;charset=utf-8');
 $commonObj = new common();
-// 获取用户id
-// $user_id = isset($_GET['id']) ? $_GET['id'] : '';
-$goods_id = isset($_GET['goods_id']) ? $_GET['goods_id'] : '';
-// 添加到购物车
-// $user_info = $_SESSION['user_info'];
-// $user_id = $user_info['id'];
-$goods_id = 1;
-$user_id = 11;
+$user_id = $_SESSION['user_info']['id'];
 if (empty($user_id)) {
     $commonObj->response(1, '', '用户ID不能为空');
 }
@@ -51,6 +45,13 @@ foreach ($goods_data as $index => $item) {
 }
 // 如果购物车数据不为空
 $shop_cart_json = json_decode($shop_cart_json, true);
+
+//var_dump($shop_cart_json);die;
+if ($shop_cart_json == [] || $shop_cart_json == []) {
+    echo "<script>alert('购物车信息为空！请先添加');</script>";
+    echo "<script>window.location.href='goods_list.php';</script>";
+    die;
+}
 // 获取当前用户的购物车
 foreach ($shop_cart_json as $index => $item) {
     // 如果用户购物车数据存在
@@ -59,7 +60,7 @@ foreach ($shop_cart_json as $index => $item) {
         $goods_total_num = 0;
         $goods_total_price = 0;
         foreach ($item['goods_list'] as $key => $value) {
-            $shop_cart_json[$index]['goods_list'][$key]['goods_info']=$goods_list[$value['goods_id']];
+            $shop_cart_json[$index]['goods_list'][$key]['goods_info'] = $goods_list[$value['goods_id']];
             $goods_total_price = $goods_total_price + $goods_list[$value['goods_id']]['price'] * $value['number'];
             $goods_total_num = $goods_total_num + $value['number'];
         }

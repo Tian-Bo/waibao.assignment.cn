@@ -177,13 +177,13 @@
             </div>
             <div class="power">
                 <div class="number">
-                    <span class="remote-number">-</span>
+                    <span class="remote-number"><a href="minusCart.php?goods_id=<?php echo $item['goods_info']['id'];?>">-</a></span>
                     <div class="shop_number"><?php echo $item['number'];?></div>
                     <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                    <span class="add-number">+</span>
+                    <span class="add-number"><a href="addCart.php?goods_id=<?php echo $item['goods_info']['id'];?>">+</a></span>
                 </div>
-                <div class="price">¥<?php echo $item['number'] * $item['goods_info']['brand'];?></div>
-                <span class="btn">移除购物车</span>
+                <div class="price">¥<?php echo $item['number'] * $item['goods_info']['price'];?></div>
+                <span class="btn"><a href="removeGoods.php?goods_id=<?php echo $item['goods_info']['id'];?>">移除购物车</a></span>
             </div>
         </li>
         <?php };?>
@@ -191,32 +191,10 @@
     <footer>
         <span class="footer-item">共: <span>¥<?php echo $goods_total_price;?>元</span></span>
         <span class="footer-item">数量: <span><?php echo $goods_total_num;?></span></span>
-        <a href="./pay.html" class="btn">提交订单</a>
+        <a href="createOrder.php" class="btn">提交订单</a>
     </footer>
 </div>
 
 </body>
-<script src="./js/jquery-1.12.4.min.js"></script>
-<script>
-    $(function () {
-        // 自减
-        $('.remote-number').on('click', function () {
-            let number = $(this).siblings('.shop_number').html()
-            if (number == 1) {
-                return alert('不能在减了')
-            }
-            number--
-            $(this).siblings('.shop_number').html(number)
-            $(this).siblings('.shop_number_value').html(number)
-        })
-        // 自加
-        $('.add-number').on('click', function () {
-            let number = $(this).siblings('.shop_number').html()
-            number++
-            $(this).siblings('.shop_number').html(number)
-            $(this).siblings('.shop_number_value').html(number)
-        })
-    })
-</script>
-
+<script src="../client/js/jquery-1.12.4.min.js"></script>
 </html>

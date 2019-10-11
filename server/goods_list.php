@@ -2,6 +2,7 @@
 /*
  * 商品列表
  */
+session_start();
 include 'common.php';
 header('Content-type:text/html;charset=utf-8');
 $commonObj = new common();
