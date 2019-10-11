@@ -84,7 +84,6 @@
                     <input class="card" type="text" placeholder="Please enter the card number" name="card">
                 </div>
                 <div class="btn btn2">Encrypted submit</div>
-                <!-- <input type="submit" class="sumbit"> -->
                 <input type="hidden" value="<? echo $cart_json['id'];?>" class="card-json">
             </form>
             <footer>
@@ -103,12 +102,14 @@
         $(function () {
             // 加密提交
             $('.btn2').on('click', function () {
-                if ($('.card').val() == '') {
-                    alert('Card number cannot be empty')
-                }
+                let data = $('.card').val()
                 let cardJson = $('.card-json').val()
+
+                if (data == '') {
+                    return alert('Card number cannot be empty')
+                }
                 if (cardJson == '') {
-                    alert('The order did not select goods')
+                    return alert('The order did not select goods')
                 }
  
                 //公钥
@@ -120,7 +121,6 @@
                 encrypt.setPublicKey('-----BEGIN PUBLIC KEY-----' + PUBLIC_KEY + '-----END PUBLIC KEY-----');
 
                 // 加密的数据
-                let data = $('.card').val()
                 data = {
                     id: cardJson,
                     card: data
@@ -128,7 +128,6 @@
                 data = JSON.stringify(data)
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
-                // $('.sumbit').click()
 
                 //使用私钥解密
                 // var decrypt = new JSEncrypt();
