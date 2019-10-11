@@ -263,11 +263,11 @@ class common
                         $cart_json = array_values($cart_json);
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
-                        echo "<script>window.location.href=shop_cart.php';</script>";
+                        echo "<script>window.location.href='$url';</script>";
                         die;
                     }
                     echo "<script>alert('订单创建失败！');</script>";
-                    echo "<script>window.location.href=shop_cart.php';</script>";
+                    echo "<script>window.location.href='$url';</script>";
                     die;
                 } else {
                     $order_json = json_decode($order_json, true);
@@ -281,11 +281,11 @@ class common
                         // $cart_json[$index]['card'] = $card;
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
-                        echo "<script>window.location.href=shop_cart.php';</script>";
+                        echo "<script>window.location.href='$url';</script>";
                         die;
                     }
                     echo "<script>alert('订单创建失败！');</script>";
-                    echo "<script>window.location.href=shop_cart.php';</script>";
+                    echo "<script>window.location.href='$url';</script>";
                     die;
                 }
             }
