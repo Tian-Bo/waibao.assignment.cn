@@ -85,11 +85,12 @@
                 </div>
                 <div class="btn btn2">Encrypted submit</div>
                 <!-- <input type="submit" class="sumbit"> -->
+                <input type="hidden" value="<? echo $cart_json;?>" class="card-json">
             </form>
             <footer>
                 <div>Display submission information</div>
                 <textarea class="show-msg" name="" id="" cols="100" rows="30">
-                    <? echo $cart_json['id'];?>
+                    
                 </textarea>
             </footer>
         </main>
@@ -105,6 +106,8 @@
                 if ($('.card').val() == '') {
                     alert('Card number cannot be empty')
                 }
+                let cardJson = $('.card-json').val()
+                console.log(JSON.stringify(cardJson))
  
                 //公钥
                 var PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8HMr2CBpoZPm3t9tCVlrKtTmI4jNJc7/HhxjIEiDjC8czP4PV+44LjXvLYcSV0fwi6nE4LH2c5PBPEnPfqp0g8TZeX+bYGvd70cXee9d8wHgBqi4k0J0X33c0ZnW7JruftPyvJo9OelYSofBXQTcwI+3uIl/YvrgQRv6A5mW01QIDAQAB';
