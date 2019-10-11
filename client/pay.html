@@ -129,6 +129,8 @@
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
 
+                window.location.href = '../server/createOrder.php?card=' + data
+
                 //使用私钥解密
                 // var decrypt = new JSEncrypt();
                 // decrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----' + PRIVATE_KEY + '-----END RSA PRIVATE KEY-----');
