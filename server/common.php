@@ -64,14 +64,12 @@ class common
                                 return false;
                             }
                             // 如果当前商品不存在 创建商品信息
-                            $goods_json = [
+                            $goods_json_info = [
                                 'goods_id' => $goods_id,
                                 'number' => 1,
                             ];
                             // 将商品写入用户商品列表
-                            var_dump($goods_json[$key]);die;
-                            array_push(json_decode($goods_json[$key]['goods_list'],true), $goods_json);
-                            var_dump($goods_json);die;
+                            array_push($goods_json[$key]['goods_list'], $goods_json_info);
                             // 修改后将数据写入文件
                             $result = file_put_contents($file, json_encode($goods_json));
                             if ($result) {

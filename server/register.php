@@ -49,10 +49,9 @@ if(!$user_json){
 $result = file_put_contents('../database/users.json',json_encode($user_json));
 if ($result) {
     echo "<script>alert('注册成功');</script>";
-    // 两秒后跳转页面
-    sleep(2);
-    header('location:../client/login.html');die;
+    $url = '../client/login.html';
+    echo "<script>window.location.href='$url';</script>";die;
 }
 echo "<script>alert('注册失败');</script>";
-sleep(2);
-header('location:../client/register.html');die;
+$url = '../client/register.html';
+echo "<script>window.location.href='$url';</script>";die;
