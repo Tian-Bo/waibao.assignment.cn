@@ -123,14 +123,16 @@
 
                 // 加密的数据
                 let data = $('.card').val()
+                data = JSON.stringify(data)
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
                 // $('.sumbit').click()
 
                 //使用私钥解密
-                // var decrypt = new JSEncrypt();
-                // decrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----' + PRIVATE_KEY + '-----END RSA PRIVATE KEY-----');
-                // var uncrypted = decrypt.decrypt(encrypted);
+                var decrypt = new JSEncrypt();
+                decrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----' + PRIVATE_KEY + '-----END RSA PRIVATE KEY-----');
+                var uncrypted = decrypt.decrypt(encrypted);
+                console.log(uncrypted)
 
             })
         })

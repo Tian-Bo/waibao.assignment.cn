@@ -24,10 +24,11 @@ class common
     public function addCart($user_id, $goods_id)
     {
         $file = '../database/shop_cart.json';
+        $url = 'shop_cart.php';
         if (file_exists($file)) {
             $goods_json = file_get_contents($file);
+            // 当前数据文件中数据为空
             if (empty($goods_json)) {
-                // 当前数据文件中数据为空
                 $goods_json = [];
                 $user_goods_json = [
                     'id' => $user_id,
@@ -37,10 +38,11 @@ class common
                     ]],
                 ];
                 array_push($goods_json, $user_goods_json);
-                $cart_file = '../database/shop_cart.json';
-                $result = file_put_contents($cart_file, json_encode($goods_json, JSON_UNESCAPED_UNICODE));
+                $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
-                    $this->response(0, '', '成功添加到购物车！');
+                    echo "<script>alert('添加成功1');</script>";
+                    echo "<script>window.location.href='$url';</script>";
+                    die;
                 }
             } else {
                 // 当前数据文件不为空
@@ -59,28 +61,61 @@ class common
                                 // 修改后将数据写入文件
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
-                                    return true;
+                                    echo "<script>alert('添加成功2');</script>";
+                                    echo "<script>window.location.href='$url';</script>";
+                                    die;
                                 }
-                                return false;
                             }
-                            // 如果当前商品不存在 创建商品信息
-                            $goods_json_info = [
-                                'goods_id' => $goods_id,
-                                'number' => 1,
-                            ];
-                            // 将商品写入用户商品列表
-                            array_push($goods_json[$key]['goods_list'], $goods_json_info);
-                            // 修改后将数据写入文件
-                            $result = file_put_contents($file, json_encode($goods_json));
-                            if ($result) {
-                                return true;
-                            }
-                            return false;
                         }
-                    } else {
-                        echo "用户不存在";die;
+                        // 不存在该商品, 追加该商品进入我的购物车
+                        $user_goods_json = [
+                            'goods_id' => $goods_id,
+                            'number' => 1,
+                        ];
+                        // 将商品写入用户商品列表
+                        array_push($goods_json[$index]['goods_list'], $user_goods_json);
+                        // 修改后将数据写入文件
+                        $result = file_put_contents($file, json_encode($goods_json));
+                        if ($result) {
+                            echo "<script>alert('添加成功3');</script>";
+                            echo "<script>window.location.href='$url';</script>";
+                            die;
+                        }
                     }
                 }
+                // 生成我的购物车 并且插入一件商品
+//                $user_goods_json = [
+//                    'id' => $user_id,
+//                    'goods_list' => [[
+//                        'goods_id' => $goods_id,
+//                        'number' => 1,
+//                    ]],
+//                ];
+//                array_push($goods_json, $user_goods_json);
+//                $result = file_put_contents($file, json_encode($goods_json));
+//                if ($result) {
+//                    echo "<script>alert('添加成功4');</script>";
+//                    echo "<script>window.location.href='$url';</script>";
+//                    die;
+//                }
+
+
+                // // 如果当前商品不存在 创建商品信息
+                // $goods_json = [
+                //     'goods_id' => $goods_id,
+                //     'number' => 1,
+                // ];
+                // // 将商品写入用户商品列表
+                // var_dump($goods_json[$key]);die;
+                // array_push(json_decode($goods_json[$key]['goods_list'],true), $goods_json);
+                // var_dump($goods_json);die;
+                // // 修改后将数据写入文件
+                // $result = file_put_contents($file, json_encode($goods_json));
+                // if ($result) {
+                //     echo "<script>alert('添加成功');</script>";
+                //     $url = 'shop_cart.php';
+                //     echo "<script>window.location.href='$url';</script>";die;
+                // }
             }
         }
     }
