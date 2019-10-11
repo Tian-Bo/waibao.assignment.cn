@@ -23,7 +23,6 @@ class common
      */
     public function addCart($user_id, $goods_id)
     {
-        echo '1234';die;
         $file = '../database/shop_cart.json';
         $url = 'shop_cart.php';
         if (file_exists($file)) {
