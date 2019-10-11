@@ -40,7 +40,7 @@ class common
                 array_push($goods_json, $user_goods_json);
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
-                    echo "<script>alert('添加成功');</script>";
+                    echo "<script>alert('添加成功1');</script>";
                     echo "<script>window.location.href='$url';</script>";die;
                 }
             } else {
@@ -60,7 +60,7 @@ class common
                                 // 修改后将数据写入文件
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
-                                    echo "<script>alert('添加成功');</script>";
+                                    echo "<script>alert('添加成功2');</script>";
                                     echo "<script>window.location.href='$url';</script>";die;
                                 }
                             }
@@ -76,7 +76,7 @@ class common
                         // 修改后将数据写入文件
                         $result = file_put_contents($file, json_encode($goods_json));
                         if ($result) {
-                            echo "<script>alert('添加成功');</script>";
+                            echo "<script>alert('添加成功3');</script>";
                             echo "<script>window.location.href='$url';</script>";die;
                         }
                     }
@@ -92,7 +92,7 @@ class common
                 array_push($goods_json, $user_goods_json);
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
-                    echo "<script>alert('添加成功');</script>";
+                    echo "<script>alert('添加成功4');</script>";
                     echo "<script>window.location.href='$url';</script>";die;
                 }
 
