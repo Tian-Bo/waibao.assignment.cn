@@ -252,6 +252,7 @@ class common
                 $order_json = file_get_contents($file);
                 if (empty($order_json)) {
                     $order_data = [];
+                    $item['card'] = $card;
                     array_push($order_data, $item);
                     // 向订单数据中写入数据
                     $result = file_put_contents($file, json_encode($order_data));
@@ -259,7 +260,7 @@ class common
                         // 成功之后 移除用户购物车信息
                         unset($cart_json[$index]['goods_list']);
                         $cart_json[$index]['goods_list'] = [];
-                        $cart_json[$index]['card'] = $card;
+                        // $cart_json[$index]['card'] = $card;
                         $cart_json = array_values($cart_json);
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
@@ -271,6 +272,7 @@ class common
                     die;
                 } else {
                     $order_json = json_decode($order_json, true);
+                    $item['card'] = $card;
                     array_push($order_json, $item);
                     // 向订单数据中写入数据
                     $result = file_put_contents($file, json_encode($order_json));
@@ -278,7 +280,6 @@ class common
                         // 成功之后 移除用户购物车信息
                         unset($cart_json[$index]['goods_list']);
                         $cart_json[$index]['goods_list'] = [];
-                        $cart_json[$index]['card'] = $card;
                         file_put_contents($cart_file, json_encode($cart_json));
                         echo "<script>alert('订单创建成功！');</script>";
                         echo "<script>window.location.href='$url';</script>";
