@@ -184,7 +184,7 @@ class common
                 array_push($goods_json, $user_goods_json);
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
-                    echo "<script>alert('添加成功1');</script>";
+                    echo "<script>alert('Add success');</script>";
                     echo "<script>window.location.href='$url';</script>";
                     die;
                 }
@@ -232,13 +232,13 @@ class common
         $url = 'shop_cart.php';
         // 根据用户id 获取用户的购物车信息
         if (!file_exists($file)) {
-            echo "<script>alert('订单数据文件不存在！');</script>";
+            echo "<script>alert('Order data file does not exist!');</script>";
             echo "<script>window.location.href='$url';</script>";
             die;
         }
 
         if (!file_exists($cart_file)) {
-            echo "<script>alert('购物车数据文件不存在！');</script>";
+            echo "<script>alert('Shopping cart data file does not exist!');</script>";
             echo "<script>window.location.href='$url';</script>";
             die;
         }
@@ -263,11 +263,11 @@ class common
                         // $cart_json[$index]['card'] = $card;
                         $cart_json = array_values($cart_json);
                         file_put_contents($cart_file, json_encode($cart_json));
-                        echo "<script>alert('订单创建成功！');</script>";
+                        echo "<script>alert('Order creation success!');</script>";
                         echo "<script>window.location.href='$url';</script>";
                         die;
                     }
-                    echo "<script>alert('订单创建失败！');</script>";
+                    echo "<script>alert('Order creation failed!');</script>";
                     echo "<script>window.location.href='$url';</script>";
                     die;
                 } else {
@@ -281,11 +281,11 @@ class common
                         unset($cart_json[$index]['goods_list']);
                         $cart_json[$index]['goods_list'] = [];
                         file_put_contents($cart_file, json_encode($cart_json));
-                        echo "<script>alert('订单创建成功！');</script>";
+                        echo "<script>alert('Order creation success!');</script>";
                         echo "<script>window.location.href='$url';</script>";
                         die;
                     }
-                    echo "<script>alert('订单创建失败！');</script>";
+                    echo "<script>alert('Order creation failed!');</script>";
                     echo "<script>window.location.href='$url';</script>";
                     die;
                 }
