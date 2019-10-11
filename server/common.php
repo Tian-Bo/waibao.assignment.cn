@@ -24,6 +24,7 @@ class common
     public function addCart($user_id, $goods_id)
     {
         $file = '../database/shop_cart.json';
+        $url = 'shop_cart.php';
         if (file_exists($file)) {
             $goods_json = file_get_contents($file);
             // 当前数据文件中数据为空
@@ -37,11 +38,9 @@ class common
                     ]],
                 ];
                 array_push($goods_json, $user_goods_json);
-                $cart_file = '../database/shop_cart.json';
-                $result = file_put_contents($cart_file, json_encode($goods_json, JSON_UNESCAPED_UNICODE));
+                $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
                     echo "<script>alert('添加成功');</script>";
-                    $url = 'shop_cart.php';
                     echo "<script>window.location.href='$url';</script>";die;
                 }
             } else {
@@ -62,7 +61,6 @@ class common
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
                                     echo "<script>alert('添加成功');</script>";
-                                    $url = 'shop_cart.php';
                                     echo "<script>window.location.href='$url';</script>";die;
                                 }
                             }
@@ -73,12 +71,12 @@ class common
                             'number' => 1,
                         ];
                         // 将商品写入用户商品列表
-                        array_push(json_decode($item['goods_list'],true), $user_goods_json);
+                        $user_goods_list = $goods_json[$index]['goods_list'];
+                        array_push($user_goods_list, $user_goods_json);
                         // 修改后将数据写入文件
                         $result = file_put_contents($file, json_encode($goods_json));
                         if ($result) {
                             echo "<script>alert('添加成功');</script>";
-                            $url = 'shop_cart.php';
                             echo "<script>window.location.href='$url';</script>";die;
                         }
                     }
@@ -95,7 +93,6 @@ class common
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
                     echo "<script>alert('添加成功');</script>";
-                    $url = 'shop_cart.php';
                     echo "<script>window.location.href='$url';</script>";die;
                 }
 
