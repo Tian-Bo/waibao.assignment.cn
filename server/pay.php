@@ -21,10 +21,11 @@ if (!empty($goods_json)) {
 $cart_json = [];
 foreach ($goods_json as $index => $item) {
     // 找到当前用户所有订单
+    echo $item;
     if ($item['id'] == $user_id) {
         $cart_json = $item;
     }
 }
-echo $cart_json[0];die;
+echo $cart_json[0];
 
 include '../client/pay.html';
