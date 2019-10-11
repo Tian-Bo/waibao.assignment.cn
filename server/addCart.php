@@ -8,7 +8,7 @@ $goods_id = isset($_GET['goods_id']) ? $_GET['goods_id'] : '';
 // 添加到购物车
 // $user_info = $_SESSION['user_info'];
 // $user_id = $user_info['id'];
-$goods_id = 1;
+$goods_id = $goods_id;
 $user_id = 11;
 $result = $commonObj->addCart($user_id, $goods_id);
 echo $result;
