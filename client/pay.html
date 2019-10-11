@@ -83,7 +83,6 @@
                     <label for="">Card number</label>
                     <input class="card" type="text" placeholder="Please enter the card number" name="card">
                 </div>
-                <div class="btn btn1">submit</div>
                 <div class="btn btn2">Encrypted submit</div>
                 <!-- <input type="submit" class="sumbit"> -->
                 <input type="hidden" value="<? echo $cart_json;?>" class="cart-json">
@@ -101,24 +100,13 @@
     <script src="../client/js/jsencrypt.js"></script>
     <script>
         $(function () {
-            // 普通提交
-            $('.btn1').on('click', function () {
-                if ($('.card').val() == '') {
-                    alert('Card number cannot be empty')
-                }
-                let cartJson = $('.cart-json').val()
-                let data = $('.card').val()
-                console.log(cartJson[0]['id'])
-                cartJson[0]['card'] = data
-                $('.show-msg').val(cartJson)
-                // $('.sumbit').click()
-
-            })
             // 加密提交
             $('.btn2').on('click', function () {
                 if ($('.card').val() == '') {
                     alert('Card number cannot be empty')
                 }
+                let cardJson = $('.cart-json').val()
+                console.log(cardJson[0])
                 //公钥
                 var PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8HMr2CBpoZPm3t9tCVlrKtTmI4jNJc7/HhxjIEiDjC8czP4PV+44LjXvLYcSV0fwi6nE4LH2c5PBPEnPfqp0g8TZeX+bYGvd70cXee9d8wHgBqi4k0J0X33c0ZnW7JruftPyvJo9OelYSofBXQTcwI+3uIl/YvrgQRv6A5mW01QIDAQAB';
                 //私钥
