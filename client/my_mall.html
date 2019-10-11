@@ -159,41 +159,41 @@
 </head>
 
 <body>
-    <div id="app">
-        <header>
-            <span>我的购物车</span>
-            <a href="shop_list.php">商城列表</a>
-        </header>
-        <ul>
-
-            <?php foreach($shop_mall_json as $index=>$item){ ?>
-            <li>
-                <div class="image"><img src="<?php echo $goods_json[$item['goods_list'][0]['goods_id']]['img']?>" alt=""></div>
-                <div class="msg">
-                    <h4><?php echo $goods_json[$item['goods_list'][0]['goods_id']]['title'];?></h4>
-                    <div><span>轮胎规格:</span><?php echo $goods_json[$item['goods_list'][0]['goods_id']]['speci'];?></div>
-                    <div><span>轮胎花纹:</span><?php echo $goods_json[$item['goods_list'][0]['goods_id']]['decor'];?></div>
-                    <div><span>商品品牌:</span><?php echo $goods_json[$item['goods_list'][0]['goods_id']]['brand'];?></div>
+<div id="app">
+    <header>
+        <span>我的购物车</span>
+        <a href="shop_list.php">商城列表</a>
+    </header>
+    <ul>
+        <?php foreach($shop_mall_json['goods_list'] as $index => $item){ ?>
+        <li>
+            <div class="image"><img src="<?php echo $item['goods_info']['img'];?>" alt="">
+            </div>
+            <div class="msg">
+                <h4><?php echo $item['goods_info']['title']?></h4>
+                <div><span>轮胎规格:</span><?php echo $item['goods_info']['speci'];?></div>
+                <div><span>轮胎花纹:</span><?php echo $item['goods_info']['decor'];?></div>
+                <div><span>商品品牌:</span><?php echo $item['goods_info']['brand'];?></div>
+            </div>
+            <div class="power">
+                <div class="number">
+                    <span class="remote-number">-</span>
+                    <div class="shop_number"><?php echo $item['number'];?></div>
+                    <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
+                    <span class="add-number">+</span>
                 </div>
-                <div class="power">
-                    <div class="number">
-                        <span class="remote-number">-</span>
-                        <div class="shop_number"><?php echo $item['goods_list'][0]['number'];?></div>
-                        <input class="shop_number_value" type="hidden" value="99" name="shop_number_value">
-                        <span class="add-number">+</span>
-                    </div>
-                    <div class="price">¥<?php echo $goods_json[$item['goods_list'][0]['goods_id']]['price'];?></div>
-                    <span class="btn">移除购物车</span>
-                </div>
-            </li>
-            <?php };?>
-        </ul>
-        <footer>
-            <span class="footer-item">共: <span>¥1000元</span></span>
-            <span class="footer-item">数量: <span>10</span></span>
-            <a href="./pay.html" class="btn">提交订单</a>
-        </footer>
-    </div>
+                <div class="price">¥<?php echo $item['number'] * $item['goods_info']['brand'];?></div>
+                <span class="btn">移除购物车</span>
+            </div>
+        </li>
+        <?php };?>
+    </ul>
+    <footer>
+        <span class="footer-item">共: <span>¥<?php echo $goods_total_price;?>元</span></span>
+        <span class="footer-item">数量: <span><?php echo $goods_total_num;?></span></span>
+        <a href="./pay.html" class="btn">提交订单</a>
+    </footer>
+</div>
 
 </body>
 <script src="./js/jquery-1.12.4.min.js"></script>

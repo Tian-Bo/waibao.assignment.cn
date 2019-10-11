@@ -41,7 +41,8 @@ class common
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
                     echo "<script>alert('添加成功1');</script>";
-                    echo "<script>window.location.href='$url';</script>";die;
+                    echo "<script>window.location.href='$url';</script>";
+                    die;
                 }
             } else {
                 // 当前数据文件不为空
@@ -61,7 +62,8 @@ class common
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
                                     echo "<script>alert('添加成功2');</script>";
-                                    echo "<script>window.location.href='$url';</script>";die;
+                                    echo "<script>window.location.href='$url';</script>";
+                                    die;
                                 }
                             }
                         }
@@ -71,29 +73,32 @@ class common
                             'number' => 1,
                         ];
                         // 将商品写入用户商品列表
-                        array_push($user_goods_list, $user_goods_json);
+                        $user_goods_list = $goods_json[$index]['goods_list'];
+                        array_push($goods_json[$index]['goods_list'], $user_goods_json);
                         // 修改后将数据写入文件
                         $result = file_put_contents($file, json_encode($goods_json));
                         if ($result) {
                             echo "<script>alert('添加成功3');</script>";
-                            echo "<script>window.location.href='$url';</script>";die;
+                            echo "<script>window.location.href='$url';</script>";
+                            die;
                         }
                     }
                 }
                 // 生成我的购物车 并且插入一件商品
-                $user_goods_json = [
-                    'id' => $user_id,
-                    'goods_list' => [[
-                        'goods_id' => $goods_id,
-                        'number' => 1,
-                    ]],
-                ];
-                array_push($goods_json, $user_goods_json);
-                $result = file_put_contents($file, json_encode($goods_json));
-                if ($result) {
-                    echo "<script>alert('添加成功4');</script>";
-                    echo "<script>window.location.href='$url';</script>";die;
-                }
+//                $user_goods_json = [
+//                    'id' => $user_id,
+//                    'goods_list' => [[
+//                        'goods_id' => $goods_id,
+//                        'number' => 1,
+//                    ]],
+//                ];
+//                array_push($goods_json, $user_goods_json);
+//                $result = file_put_contents($file, json_encode($goods_json));
+//                if ($result) {
+//                    echo "<script>alert('添加成功4');</script>";
+//                    echo "<script>window.location.href='$url';</script>";
+//                    die;
+//                }
 
 
                 // // 如果当前商品不存在 创建商品信息
