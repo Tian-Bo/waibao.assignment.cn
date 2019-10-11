@@ -107,8 +107,8 @@
 </head>
     <div id="app">
         <header>
-            <span>商品列表</span>
-            <a href="shop_cart.php">我的购物车</a>
+            <span>List of commodities</span>
+            <a href="shop_cart.php">My shopping cart</a>
         </header>
         <ul>
             <!--循环变量start-->
@@ -117,13 +117,13 @@
                     <div class="image"><img src="<?php echo $item['img']?>" alt=""></div>
                     <div class="msg">
                         <h4><?php echo $item['title'];?></h4>
-                        <div><span>轮胎规格:</span><?php echo $item['speci'];?></div>
-                        <div><span>轮胎花纹:</span><?php echo $item['decor'];?></div>
-                        <div><span>商品品牌:</span><?php echo $item['brand'];?></div>
+                        <div><span>Tire specification:</span><?php echo $item['speci'];?></div>
+                        <div><span>Tread pattern:</span><?php echo $item['decor'];?></div>
+                        <div><span>Commodity brand:</span><?php echo $item['brand'];?></div>
                     </div>
                     <div class="power">
                         <div class="price">¥<?php echo $item['price'];?></div>
-                        <a href="javascript:void(0)" class="btn" value="<?php echo $item['id'];?>">加入购物车</a>
+                        <a href="javascript:void(0)" class="btn" value="<?php echo $item['id'];?>">Add to cart</a>
                     </div>
                 </li>
             <?php };?>

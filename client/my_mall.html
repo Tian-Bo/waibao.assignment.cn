@@ -161,8 +161,8 @@
 <body>
 <div id="app">
     <header>
-        <span>我的购物车</span>
-        <a href="goods_list.php">商城列表</a>
+        <span>My shopping cart</span>
+        <a href="goods_list.php">Mall list</a>
     </header>
     <ul>
         <?php foreach($shop_mall_json['goods_list'] as $index => $item){ ?>
@@ -171,9 +171,9 @@
             </div>
             <div class="msg">
                 <h4><?php echo $item['goods_info']['title']?></h4>
-                <div><span>轮胎规格:</span><?php echo $item['goods_info']['speci'];?></div>
-                <div><span>轮胎花纹:</span><?php echo $item['goods_info']['decor'];?></div>
-                <div><span>商品品牌:</span><?php echo $item['goods_info']['brand'];?></div>
+                <div><span>Tire specification:</span><?php echo $item['goods_info']['speci'];?></div>
+                <div><span>Tread pattern:</span><?php echo $item['goods_info']['decor'];?></div>
+                <div><span>Commodity brand:</span><?php echo $item['goods_info']['brand'];?></div>
             </div>
             <div class="power">
                 <div class="number">
@@ -183,15 +183,15 @@
                     <span class="add-number"><a href="addCart.php?goods_id=<?php echo $item['goods_info']['id'];?>">+</a></span>
                 </div>
                 <!-- <div class="price">¥<?php echo $item['number'] * $item['goods_info']['price'];?></div> -->
-                <span class="btn"><a href="removeGoods.php?goods_id=<?php echo $item['goods_info']['id'];?>">移除购物车</a></span>
+                <span class="btn"><a href="removeGoods.php?goods_id=<?php echo $item['goods_info']['id'];?>">Remove the shopping cart</a></span>
             </div>
         </li>
         <?php };?>
     </ul>
     <footer>
-        <span class="footer-item">共: <span>¥<?php echo $goods_total_price;?>元</span></span>
-        <span class="footer-item">数量: <span><?php echo $goods_total_num;?></span></span>
-        <a href="pay.php" class="btn">提交订单</a>
+        <span class="footer-item">common: <span>¥<?php echo $goods_total_price;?>element</span></span>
+        <span class="footer-item">Number: <span><?php echo $goods_total_num;?></span></span>
+        <a href="pay.php" class="btn">place order</a>
     </footer>
 </div>
 

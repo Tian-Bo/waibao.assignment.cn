@@ -8,13 +8,13 @@ header('Content-type:text/html;charset=utf-8');
 $commonObj = new common();
 $user_id = $_SESSION['user_info']['id'];
 if (empty($user_id)) {
-    $commonObj->response(1, '', '用户ID不能为空');
+    $commonObj->response(1, '', 'User ID cannot be empty');
 }
 // 读取数据文件
 $file = '../database/shop_cart.json';
 
 if (!file_exists($file)) {
-    $commonObj->response(1, '', '数据文件不存在');
+    $commonObj->response(1, '', 'Data file does not exist');
 }
 
 $shop_cart_json = file_get_contents($file);
@@ -48,7 +48,7 @@ $shop_cart_json = json_decode($shop_cart_json, true);
 
 //var_dump($shop_cart_json);die;
 if ($shop_cart_json == [] || $shop_cart_json == []) {
-    echo "<script>alert('购物车信息为空！请先添加');</script>";
+    echo "<script>alert('Shopping cart information is empty! Please add first.');</script>";
     echo "<script>window.location.href='goods_list.php';</script>";
     die;
 }
@@ -72,7 +72,7 @@ foreach ($shop_cart_json as $index => $item) {
 $file = '../database/goods_list.json';
 
 if (!file_exists($file)) {
-    $commonObj->response(1, '', '数据文件不存在！');
+    $commonObj->response(1, '', 'Data file does not exist!');
 }
 $goods_json = file_get_contents($file);
 if (!empty($goods_json)) {

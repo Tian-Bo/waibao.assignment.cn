@@ -40,7 +40,7 @@ class common
                 array_push($goods_json, $user_goods_json);
                 $result = file_put_contents($file, json_encode($goods_json));
                 if ($result) {
-                    echo "<script>alert('添加成功1');</script>";
+                    echo "<script>alert('Add success');</script>";
                     echo "<script>window.location.href='$url';</script>";
                     die;
                 }
@@ -61,7 +61,7 @@ class common
                                 // 修改后将数据写入文件
                                 $result = file_put_contents($file, json_encode($goods_json));
                                 if ($result) {
-                                    echo "<script>alert('添加成功2');</script>";
+                                    echo "<script>alert('Add success');</script>";
                                     echo "<script>window.location.href='$url';</script>";
                                     die;
                                 }
@@ -77,7 +77,7 @@ class common
                         // 修改后将数据写入文件
                         $result = file_put_contents($file, json_encode($goods_json));
                         if ($result) {
-                            echo "<script>alert('添加成功3');</script>";
+                            echo "<script>alert('Add success');</script>";
                             echo "<script>window.location.href='$url';</script>";
                             die;
                         }
@@ -94,7 +94,7 @@ class common
                array_push($goods_json, $user_goods_json);
                $result = file_put_contents($file, json_encode($goods_json));
                if ($result) {
-                   echo "<script>alert('添加成功4');</script>";
+                   echo "<script>alert('Add success');</script>";
                    echo "<script>window.location.href='$url';</script>";
                    die;
                }
@@ -133,7 +133,7 @@ class common
 
         // 判断文件是否存在
         if (!file_exists($file)) {
-            echo "<script>alert('数据文件不存在！');</script>";
+            echo "<script>alert('Data file does not exist！');</script>";
             echo "<script>window.location.href='$url';</script>";
             die;
         }
@@ -149,11 +149,11 @@ class common
                         $cart_json[$index]['goods_list'] = $item['goods_list'];
                         $result = file_put_contents($file, json_encode($cart_json));
                         if ($result) {
-                            echo "<script>alert('移除成功');</script>";
+                            echo "<script>alert('Remove success');</script>";
                             echo "<script>window.location.href='$url';</script>";
                             die;
                         }
-                        echo "<script>alert('移除失败');</script>";
+                        echo "<script>alert('Remove failed');</script>";
                         echo "<script>window.location.href='$url';</script>";
                         die;
 

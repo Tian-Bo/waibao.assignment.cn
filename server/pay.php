@@ -11,7 +11,7 @@ $user_id = $_SESSION['user_info']['id'];
 $file = '../database/shop_cart.json';
 
 if (!file_exists($file)) {
-    $commonObj->response(1, '', '数据文件不存在！');
+    $commonObj->response(1, '', 'Data file does not exist!');
 }
 $goods_json = file_get_contents($file);
 if (!empty($goods_json)) {

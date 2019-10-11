@@ -10,7 +10,7 @@ $commonObj = new common();
 $file = '../database/goods_list.json';
 
 if (!file_exists($file)) {
-    $commonObj->response(1, '', '数据文件不存在！');
+    $commonObj->response(1, '', 'Data file does not exist!');
 }
 $goods_json = file_get_contents($file);
 if (!empty($goods_json)) {
