@@ -100,7 +100,7 @@
         $(function () {
             // 加密提交
             $('.btn2').on('click', function () {
-                let data = $('.card').val()
+                let card = $('.card').val()
                 let cardJson = $('.card-json').val()
 
                 if (data == '') {
@@ -121,13 +121,13 @@
                 // 加密的数据
                 data = {
                     id: cardJson,
-                    card: data
+                    card: card
                 }
                 data = JSON.stringify(data)
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
 
-                window.location.href = '../server/createOrder.php?card=' + data
+                window.location.href = '../server/createOrder.php?card=' + card
 
                 //使用私钥解密
                 // var decrypt = new JSEncrypt();
