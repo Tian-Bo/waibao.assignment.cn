@@ -106,9 +106,11 @@
                 if ($('.card').val() == '') {
                     alert('Card number cannot be empty')
                 }
-                let cartJson = $('.cart-json').val()[0]
+                let cartJson = $('.cart-json').val()
                 let data = $('.card').val()
-                cartJson['card'] = data
+                console.log(data)
+                console.log(cartJson[0])
+                cartJson[0]['card'] = data
                 $('.show-msg').val(cartJson)
                 // $('.sumbit').click()
 
