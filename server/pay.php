@@ -25,6 +25,5 @@ foreach ($goods_json as $index => $item) {
         $cart_json = $item;
     }
 }
-$cart_json=implode($cart_json,$array);
 
 include '../client/pay.html';
