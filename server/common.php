@@ -84,20 +84,20 @@ class common
                     }
                 }
                 // 生成我的购物车 并且插入一件商品
-//                $user_goods_json = [
-//                    'id' => $user_id,
-//                    'goods_list' => [[
-//                        'goods_id' => $goods_id,
-//                        'number' => 1,
-//                    ]],
-//                ];
-//                array_push($goods_json, $user_goods_json);
-//                $result = file_put_contents($file, json_encode($goods_json));
-//                if ($result) {
-//                    echo "<script>alert('添加成功4');</script>";
-//                    echo "<script>window.location.href='$url';</script>";
-//                    die;
-//                }
+               $user_goods_json = [
+                   'id' => $user_id,
+                   'goods_list' => [[
+                       'goods_id' => $goods_id,
+                       'number' => 1,
+                   ]],
+               ];
+               array_push($goods_json, $user_goods_json);
+               $result = file_put_contents($file, json_encode($goods_json));
+               if ($result) {
+                   echo "<script>alert('添加成功4');</script>";
+                   echo "<script>window.location.href='$url';</script>";
+                   die;
+               }
 
 
                 // // 如果当前商品不存在 创建商品信息
