@@ -86,6 +86,7 @@
                 <div class="btn btn1">submit</div>
                 <div class="btn btn2">Encrypted submit</div>
                 <!-- <input type="submit" class="sumbit"> -->
+                <input type="hidden" value="<? echo $cart_json;?>" class="cart-json">
             </form>
             <footer>
                 <div>Display submission information</div>
@@ -100,15 +101,19 @@
     <script src="../client/js/jsencrypt.js"></script>
     <script>
         $(function () {
+            // 普通提交
             $('.btn1').on('click', function () {
                 if ($('.card').val() == '') {
                     alert('Card number cannot be empty')
                 }
+                let cartJson = $('.cart-json').val()[0]
                 let data = $('.card').val()
-                $('.show-msg').val(data)
+                cartJson['card'] = data
+                $('.show-msg').val(cartJson)
                 // $('.sumbit').click()
 
             })
+            // 加密提交
             $('.btn2').on('click', function () {
                 if ($('.card').val() == '') {
                     alert('Card number cannot be empty')
