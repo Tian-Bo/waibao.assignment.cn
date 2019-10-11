@@ -108,8 +108,7 @@
                 }
                 let cartJson = $('.cart-json').val()
                 let data = $('.card').val()
-                console.log(data)
-                console.log(cartJson[0])
+                console.log(cartJson[0]['id'])
                 cartJson[0]['card'] = data
                 $('.show-msg').val(cartJson)
                 // $('.sumbit').click()

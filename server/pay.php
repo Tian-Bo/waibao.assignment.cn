@@ -25,6 +25,5 @@ foreach ($goods_json as $index => $item) {
         $cart_json = $item;
     }
 }
-echo $cart_json;die;
 
 include '../client/pay.html';
