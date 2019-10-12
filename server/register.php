@@ -11,18 +11,18 @@ $password = isset($_GET['password'])?$_GET['password']:'';
 
 $commonObj = new common();
 if (empty($username)) {
-    $commonObj->response(1,'','账号不能为空！');
+    $commonObj->response(1,'','Accounts cant be empty!');
 }
 if (empty($password)) {
-    $commonObj->response(1,'','密码不能为空！');
+    $commonObj->response(1,'','Password cannot be empty!');
 }
 if (strlen($password) < 6) {
-    $commonObj->response(1,'','密码长度不能小于6位！');
+    $commonObj->response(1,'','Password length should not be less than 6 bits!');
 }
 $file = '../database/users.json';
 // 读取数据文件
 if (!file_exists($file)) {
-    $commonObj->response(1,'','数据文件不存在！');
+    $commonObj->response(1,'','Data file does not exist!');
 }
 $user_json = file_get_contents($file);
 // 无用户时
@@ -48,11 +48,10 @@ if(!$user_json){
 // 写入文件
 $result = file_put_contents('../database/users.json',json_encode($user_json));
 if ($result) {
-    echo "<script>alert('注册成功');</script>";
-    // 两秒后跳转页面
-    sleep(2);
-    header('location:../client/login.html');die;
+    echo "<script>alert('login was successful');</script>";
+    $url = '../client/login.html';
+    echo "<script>window.location.href='$url';</script>";die;
 }
-echo "<script>alert('注册失败');</script>";
-sleep(2);
-header('location:../client/register.html');die;
+echo "<script>alert('login has failed');</script>";
+$url = '../client/register.html';
+echo "<script>window.location.href='$url';</script>";die;

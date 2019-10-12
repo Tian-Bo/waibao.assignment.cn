@@ -83,36 +83,34 @@
                     <label for="">Card number</label>
                     <input class="card" type="text" placeholder="Please enter the card number" name="card">
                 </div>
-                <div class="btn btn1">submit</div>
                 <div class="btn btn2">Encrypted submit</div>
-                <!-- <input type="submit" class="sumbit"> -->
+                <input type="hidden" value="<? echo $cart_json['id'];?>" class="card-json">
             </form>
             <footer>
                 <div>Display submission information</div>
-                <textarea class="show-msg" name="" id="" cols="100" rows="30">
-                </textarea>
+                <textarea class="show-msg" name="" id="" cols="100" rows="30"></textarea>
             </footer>
         </main>
     </div>
 
 
-    <script src="./js/jquery-1.12.4.min.js"></script>
-    <script src="./js/jsencrypt.js"></script>
+    <script src="../client/js/jquery-1.12.4.min.js"></script>
+    <script src="../client/js/jsencrypt.js"></script>
     <script>
         $(function () {
-            $('.btn1').on('click', function () {
-                if ($('.card').val() == '') {
-                    alert('Card number cannot be empty')
-                }
-                let data = $('.card').val()
-                $('.show-msg').val(data)
-                // $('.sumbit').click()
-
-            })
+            // 加密提交
             $('.btn2').on('click', function () {
-                if ($('.card').val() == '') {
-                    alert('Card number cannot be empty')
+                let card = $('.card').val()
+                let cardJson = $('.card-json').val()
+
+                if (card == '') {
+                    return alert('Card number cannot be empty')
                 }
+                console.log(cardJson)
+                if (cardJson == '') {
+                    return alert('The order did not select goods')
+                }
+ 
                 //公钥
                 var PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8HMr2CBpoZPm3t9tCVlrKtTmI4jNJc7/HhxjIEiDjC8czP4PV+44LjXvLYcSV0fwi6nE4LH2c5PBPEnPfqp0g8TZeX+bYGvd70cXee9d8wHgBqi4k0J0X33c0ZnW7JruftPyvJo9OelYSofBXQTcwI+3uIl/YvrgQRv6A5mW01QIDAQAB';
                 //私钥
@@ -122,17 +120,21 @@
                 encrypt.setPublicKey('-----BEGIN PUBLIC KEY-----' + PUBLIC_KEY + '-----END PUBLIC KEY-----');
 
                 // 加密的数据
-                let data = $('.card').val()
+                let data = {
+                    id: cardJson,
+                    card: card
+                }
                 data = JSON.stringify(data)
                 var encrypted = encrypt.encrypt(data);
                 $('.show-msg').val(encrypted)
-                // $('.sumbit').click()
+
+                window.location.href = '../server/createOrder.php?card=' + card
 
                 //使用私钥解密
-                var decrypt = new JSEncrypt();
-                decrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----' + PRIVATE_KEY + '-----END RSA PRIVATE KEY-----');
-                var uncrypted = decrypt.decrypt(encrypted);
-                console.log(uncrypted)
+                // var decrypt = new JSEncrypt();
+                // decrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----' + PRIVATE_KEY + '-----END RSA PRIVATE KEY-----');
+                // var uncrypted = decrypt.decrypt(encrypted);
+                // console.log(uncrypted)
 
             })
         })
