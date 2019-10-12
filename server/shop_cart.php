@@ -38,15 +38,32 @@ $shop_cart_json = file_get_contents($file);
 //         $commonObj->response(0, $cart_data, '获取购物车信息成功！');
 //     }
 // }
+
+// 读取商品列表数据
+$goods_file = '../database/goods_list.json';
+if (file_exists($goods_file)) {
+    $goods_data = json_decode(file_get_contents($goods_file), true);
+}
+// 循环重组数据
+$goods_list = [];
+foreach ($goods_data as $index => $item) {
+    $goods_list[$item['id']] = $item;
+}
 // 如果购物车数据不为空
 $shop_cart_json = json_decode($shop_cart_json, true);
 // 获取当前用户的购物车
-$shop_mall_json = [];
 foreach ($shop_cart_json as $index => $item) {
     // 如果用户购物车数据存在
     if ($item['id'] == $user_id) {
-        // $commonObj->response(1, $item, '购物车信息获取成功！');
-        array_push($shop_mall_json, $item);
+        // 循环遍历商品列表
+        $goods_total_num = 0;
+        $goods_total_price = 0;
+        foreach ($item['goods_list'] as $key => $value) {
+            $shop_cart_json[$index]['goods_list'][$key]['goods_info']=$goods_list[$value['goods_id']];
+            $goods_total_price = $goods_total_price + $goods_list[$value['goods_id']]['price'] * $value['number'];
+            $goods_total_num = $goods_total_num + $value['number'];
+        }
+        $shop_mall_json = $shop_cart_json[$index];
     }
 }
 
