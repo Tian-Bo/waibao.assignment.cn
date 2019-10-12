@@ -47,7 +47,7 @@ foreach ($goods_data as $index => $item) {
 $shop_cart_json = json_decode($shop_cart_json, true);
 
 //var_dump($shop_cart_json);die;
-if ($shop_cart_json == [] || $shop_cart_json == []) {
+if ($shop_cart_json == '' || $shop_cart_json == []) {
     echo "<script>alert('Shopping cart information is empty! Please add first.');</script>";
     echo "<script>window.location.href='goods_list.php';</script>";
     die;
@@ -65,11 +65,13 @@ foreach ($shop_cart_json as $index => $item) {
             $goods_total_num = $goods_total_num + $value['number'];
         }
         $shop_mall_json = $shop_cart_json[$index];
-    } else {
-        echo "<script>alert('Shopping cart information is empty! Please add first.');</script>";
-        echo "<script>window.location.href='goods_list.php';</script>";
-        die;
     }
+}
+
+if (!isset($shop_mall_json)) {
+    echo "<script>alert('Shopping cart information is empty! Please add first.');</script>";
+    echo "<script>window.location.href='goods_list.php';</script>";
+    die;
 }
 
 // 读取数据文件
