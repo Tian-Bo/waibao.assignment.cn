@@ -201,6 +201,11 @@ class common
                             if ($value['goods_id'] == $goods_id) {
                                 // 数量加一
                                 $user_goods_list[$key]['number'] = $value['number'] - 1;
+                                if ($user_goods_list[$key]['number'] == 0) {
+                                    echo "<script>alert('Minimum not less than 1');</script>";
+                                    echo "<script>window.location.href='$url';</script>";
+                                    die;
+                                }
                                 $goods_json[$index]['goods_list'] = $user_goods_list;
                                 // 修改后将数据写入文件
                                 $result = file_put_contents($file, json_encode($goods_json));
