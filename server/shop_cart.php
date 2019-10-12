@@ -65,6 +65,10 @@ foreach ($shop_cart_json as $index => $item) {
             $goods_total_num = $goods_total_num + $value['number'];
         }
         $shop_mall_json = $shop_cart_json[$index];
+    } else {
+        echo "<script>alert('Shopping cart information is empty! Please add first.');</script>";
+        echo "<script>window.location.href='goods_list.php';</script>";
+        die;
     }
 }
 
